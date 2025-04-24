@@ -28,8 +28,7 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
           echo "API Key starts with: ${OPENAI_API_KEY:0:4}" || true
-
-        
+    
       - name: Run AI-assisted test generation
         run: |
           python phase1_ai_assisted/generate_test_case_chatgpt.py
