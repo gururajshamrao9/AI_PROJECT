@@ -34,3 +34,9 @@ jobs:
       - name: Run RCA feedback loop
         run: |
           python phase3_ai_driven_pipeline/rca_feedback_loop.py
+          
+      - name: Debug API Key
+        run: echo "API Key starts with: ${OPENAI_API_KEY:0:4}"
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+
