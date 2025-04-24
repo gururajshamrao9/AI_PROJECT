@@ -13,3 +13,4 @@ def generate_test_case(feature_desc):
 
 if __name__ == "__main__":
     print(generate_test_case("Login functionality with valid credentials"))
+    print ("Testing AI")
