@@ -1,0 +1,2 @@
+[ERROR] Timeout while connecting to DB
+[ERROR] NullPointerException on line 53
