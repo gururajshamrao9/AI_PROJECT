@@ -1,3 +1,4 @@
+import os
 # New OpenAI v1+ syntax
 import openai
 
