@@ -15,3 +15,4 @@ def generate_test_case(prompt):
     return response.choices[0].message.content
 
 print(generate_test_case("Login functionality with valid credentials"))
+print(test)
