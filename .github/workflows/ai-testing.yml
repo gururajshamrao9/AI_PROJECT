@@ -26,7 +26,9 @@ jobs:
       - name: Debug API Key
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: echo "API Key starts with: ${OPENAI_API_KEY:0:4}"
+        run: |
+          echo "API Key starts with: ${OPENAI_API_KEY:0:4}" || true
+
         
       - name: Run AI-assisted test generation
         run: |
