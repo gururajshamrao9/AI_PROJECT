@@ -22,7 +22,12 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-
+          
+      - name: Debug API Key
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: echo "API Key starts with: ${OPENAI_API_KEY:0:4}"
+        
       - name: Run AI-assisted test generation
         run: |
           python phase1_ai_assisted/generate_test_case_chatgpt.py
@@ -33,11 +38,6 @@ jobs:
 
       - name: Run RCA feedback loop
         run: |
-          python phase3_ai_driven_pipeline/rca_feedback_loop.py
-          
-          
-      - name: Debug API Key
-        run: echo "API Key starts with: ${OPENAI_API_KEY:0:4}"
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          python phase3_ai_driven_pipeline/rca_feedback_loop.py   
+    
 
