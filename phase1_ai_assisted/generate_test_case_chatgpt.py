@@ -1,16 +1,17 @@
+# New OpenAI v1+ syntax
 import openai
-import os
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
+client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-def generate_test_case(feature_desc):
-    prompt = f"Write a Selenium test case in Python using unittest for the feature: {feature_desc}"
-    response = openai.ChatCompletion.create(
+def generate_test_case(prompt):
+    response = client.chat.completions.create(
         model="gpt-4",
-        messages=[{"role": "user", "content": prompt}]
+        messages=[
+            {"role": "system", "content": "You are a QA engineer."},
+            {"role": "user", "content": prompt}
+        ],
+        temperature=0.7,
     )
-    return response["choices"][0]["message"]["content"]
+    return response.choices[0].message.content
 
-if __name__ == "__main__":
-    print(generate_test_case("Login functionality with valid credentials"))
-    print ("Testing AI")
+print(generate_test_case("Login functionality with valid credentials"))
