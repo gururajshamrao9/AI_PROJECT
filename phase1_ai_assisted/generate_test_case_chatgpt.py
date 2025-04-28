@@ -1,20 +1,18 @@
-import os
-from openai import OpenAI
+# phase1_ai_assisted/generate_test_case_chatgpt.py
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+import ollama
 
-def generate_test_case(feature):
-    prompt = f"Generate test cases for the feature: {feature}"
-    response = client.chat.completions.create(
-        model="gpt-3.5-turbo",  # <- Update this if you confirm gpt-4 works
+def generate_test_case(prompt):
+    response = ollama.chat(
+        model='llama3',  # Make sure you have pulled this model!
         messages=[
-            {"role": "system", "content": "You are an expert software QA engineer."},
-            {"role": "user", "content": prompt}
+            {"role": "user", "content": f"Generate test cases for: {prompt}"}
         ]
     )
-    return response.choices[0].message.content
+    return response['message']['content']
 
 if __name__ == "__main__":
+    print("Running Phase 1: AI Test Case Generation")
     print(generate_test_case("Login functionality with valid credentials"))
-    print(test)
+
 
