@@ -3,3 +3,4 @@ langchain
 crewai
 python-dotenv
 gitpython
+ollama
