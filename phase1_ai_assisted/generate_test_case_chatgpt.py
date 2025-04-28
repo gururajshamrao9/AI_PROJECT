@@ -18,4 +18,5 @@ if __name__ == "__main__":
     print(generate_test_case("Login functionality with valid credentials"))
     print(test)
     print(test1)
+    print(test2)
 
